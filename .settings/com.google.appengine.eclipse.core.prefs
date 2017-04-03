@@ -1,0 +1,12 @@
+=\=\=\=\=\=\=
+<<<<<<<=HEAD
+>>>>>>>=branch 'refs/heads/master' of ssh\://git@github.com/nkawano/attend
+eclipse.preferences.version=1
+filesCopiedToWebInfLib=appengine-api-1.0-sdk-1.9.9.jar|appengine-api-labs.jar|appengine-endpoints-deps.jar|appengine-endpoints.jar|appengine-jsr107cache-1.9.9.jar|jsr107cache-1.1.jar
+gaeDatanucleusEnabled=false
+gaeDatanucleusVersion=v1
+gaeDeployDialogSettings=
+gaeLaunchAppInBrowser=true
+googleCloudSqlEnabled=false
+localDevMySqlEnabled=true
+ormEnhancementInclusions=

@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Equivalency    by Free CSS Templates</title>
+<link href="style.css" rel="stylesheet" type="text/css" media="screen" />
+</head>
+<body>
+<div id="wrapper">
+	<div id="header">
+		<div id="logo">
+			<h1><a href="#">ATTEND </a></h1>
+			<p> 出席取りますよ </p>
+		</div>
+		<div id="menu">
+			<ul>
+				<li class="first current_page_item"><a href="#">練習日入力</a></li>
+				<li><a href="#">出席集計</a></li>
+				<li><a href="#">メール設定</a></li>
+				<li><a href="#">権限設定</a></li>
+				<li><a href="#">その他</a></li>
+			</ul>
+		</div>
+	</div>
+	<!-- end #header -->
+	<div id="page">
+		<div id="page-bgtop">
+			<div id="page-bgbtm">
+				<div id="sidebar">
+					<ul>
+ 						<li>
+							<div id="login" >
+								<form method="post" action="#">
+									<div>
+										<h2>ログイン</h2>
+										ID: <input type="text" name="id" id="loginid" value="ID" /> <BR>
+										Pass: <input type="password" name="pass" id="loginid" value="Password" /><BR>
+										<input type="submit" id="loginsubmit" value="Login" />
+									</div>
+								</form>
+							</div> 
+							<div style="clear: both;">&nbsp;</div>
+						</li>
+						<li>
+							<h2>メニュー</h2>
+							<ul>
+								<li><a href="#">出席入力</a></li>
+								<li><a href="#">出席入力内容確認</a></li>
+								<li><a href="#">登録情報変更</a></li>
+								<li><a href="#">その他</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<!-- end #sidebar -->
+				<div id="content">
+					<div class="post">
+						<h2>2010年10月</h2>
+						<ul>
+							<li>10月1日 浦和南公民館 13:00 - 17:00</li>
+							<li>
+								<input type="radio" name="q1" value="1" checked> 出席
+								<input type="radio" name="q1" value="2"> 欠席
+								<input type="radio" name="q1" value="3"> 遅刻
+								<input type="radio" name="q1" value="4"> 早退&nbsp
+								<input type="text" name="reason" value="遅刻or早退の時間" id="reason">
+							</li>
+						</ul>
+						<ul>
+							<li>10月1日 浦和南公民館 13:00 - 17:00</li>
+							<li>
+								<input type="radio" name="q2" value="1" checked> 出席
+								<input type="radio" name="q2" value="2"> 欠席
+								<input type="radio" name="q2" value="3"> 遅刻
+								<input type="radio" name="q2" value="4"> 早退&nbsp
+								<input type="text" name="reason" value="遅刻or早退の時間" id="reason">
+							</li>
+						</ul>
+						<ul>
+							<li>10月1日 浦和南公民館 13:00 - 17:00</li>
+							<li>
+								<input type="radio" name="q3" value="1" checked> 出席
+								<input type="radio" name="q3" value="2"> 欠席
+								<input type="radio" name="q3" value="3"> 遅刻
+								<input type="radio" name="q3" value="4"> 早退&nbsp
+								<input type="text" name="reason" value="遅刻or早退の時間" id="reason">
+							</li>
+						</ul>
+						<p class="links"><a href="#">前の月へ</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" title="b0x w">次の月へ</a></p>
+						<input type="submit" id="submit" value="決定" />
+					</div>
+					<div style="clear: both;">&nbsp;</div>
+				</div>
+				<!-- end #content -->
+				<div style="clear: both;">&nbsp;</div>
+			</div>
+		</div>
+	</div>
+	<!-- end #page -->
+</div>
+<div id="footer">
+	<p> 仕事欲しいニダー コピーライトとかはここに。</p>
+</div>
+<!-- end #footer -->
+</body>
+</html>

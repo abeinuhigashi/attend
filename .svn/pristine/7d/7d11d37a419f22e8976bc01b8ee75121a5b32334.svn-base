@@ -1,0 +1,25 @@
+<!-- Indices written at Tue, 16 Jun 2015 11:00:24 JST -->
+
+<datastore-indexes>
+
+    <!-- Used 6 times in query history -->
+    <datastore-index kind="Practice" ancestor="false" source="auto">
+        <property name="needSendMail" direction="asc"/>
+        <property name="startDate" direction="asc"/>
+    </datastore-index>
+
+    <!-- Used 16 times in query history -->
+    <datastore-index kind="Member" ancestor="false" source="auto">
+        <property name="notUsedLongTime" direction="asc"/>
+        <property name="part" direction="asc"/>
+        <property name="suspended" direction="asc"/>
+        <property name="id" direction="asc"/>
+    </datastore-index>
+
+    <!-- Used 1 time in query history -->
+    <datastore-index kind="Practice" ancestor="false" source="auto">
+        <property name="needCalc" direction="asc"/>
+        <property name="startDate" direction="asc"/>
+    </datastore-index>
+
+</datastore-indexes>

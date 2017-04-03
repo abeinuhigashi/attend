@@ -1,0 +1,19 @@
+#To control the authorities
+auth_realm_base=manage
+attendance.refer=/attendance/
+attendance.update=nothing
+practice.refer=/practice/
+practice.update=/practice/regist/,/practice/update/,
+member.refer=/member/
+member.update=/member/regist/,/member/update/
+memberAuth.update=/member/updateAuth/
+
+#To send mails
+mailAddr.user.admin=abeinu.higashi@gmail.com
+mailAddr.system.admin=kaz0830@gmail.com
+mailAddr.user.all=abeinu-e@freeml.com
+
+rootpath.batch=/attend/batch/
+
+#To calculate attendances
+calc.attend.date=2013-02-25,2013-06-09,2013-11-25,2014-03-08,2014-06-15,2014-11-30

@@ -1,0 +1,131 @@
+package slim3.controller.attend.calculateAttendance;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import org.slim3.controller.Controller;
+import org.slim3.controller.Navigation;
+import org.slim3.util.DateUtil;
+import org.slim3.util.StringUtil;
+
+import slim3.constants.Constants;
+import slim3.model.Attendance;
+import slim3.model.Member;
+import slim3.service.AttendanceService;
+import slim3.service.MemberService;
+import slim3.service.PracticeService;
+import slim3.util.AttendDateUtil;
+import slim3.util.SettingPropertyUtil;
+
+import com.google.appengine.api.datastore.Key;
+
+public class IndexController extends Controller {
+
+    private static AttendanceService attendanceSvc = new AttendanceService();
+    private static PracticeService practiceSvc = new PracticeService();
+
+    @Override
+    public Navigation run() throws Exception {
+
+        ConstractDispData();
+
+        return forward("index.jsp");
+    }
+
+    /**
+     * 画面表示項目の構築
+     */
+    private void ConstractDispData() {
+
+        List<Date> dateList = getDateList();
+        List<Date> fromDateList = new ArrayList<Date>();
+        List<Date> toDateList = new ArrayList<Date>();
+        List<Integer> numPracticeList = new ArrayList<Integer>();
+        List<Integer> numFullAttendList = new ArrayList<Integer>();
+        List<Integer> numPartAttendList = new ArrayList<Integer>();
+        List<Double> ratioList = new ArrayList<Double>();
+
+        // 期限毎に出席率の計算を行う。
+        for (int i = 0; i < dateList.size() - 1; i++) {
+
+            // fromDate, toDateの抽出
+            Date fromDate = dateList.get(i);
+            Date toDate = dateList.get(i + 1);
+
+            // 計算対象の出席情報を取得
+            List<Key> practiceKeyList =
+                practiceSvc.searchKeyListFromDateSpanForCalc(fromDate, toDate);
+
+            List<Attendance> attendanceList =
+                attendanceSvc.searchFromMemberKeyAndPracticeKey(
+                    getMemberKey(),
+                    practiceKeyList);
+
+            // 出席率の計算
+            int numFullAttend = 0;
+            int numPartAttend = 0;
+            double ratio = 0.0f;
+            if (attendanceList != null) {
+                for (Attendance attendance : attendanceList) {
+                    if (attendance.getAttendance() == Constants.ATTENDANCE_PRESENCE) {
+                        numFullAttend++;
+                    } else if (attendance.getAttendance() == Constants.ATTENDANCE_EARLYLEAVE
+                        || attendance.getAttendance() == Constants.ATTENDANCE_TARDINESS) {
+                        numPartAttend++;
+                    }
+                }
+                ratio =
+                    (numFullAttend + numPartAttend / 2.0)
+                        / (double) practiceKeyList.size();
+            }
+            // 結果のリスト格納
+            fromDateList.add(fromDate);
+            toDateList.add(AttendDateUtil.addDay(toDate, -1)); // 表示上は一日前になる
+            numPracticeList.add(practiceKeyList.size());
+            numFullAttendList.add(numFullAttend);
+            numPartAttendList.add(numPartAttend);
+            ratioList.add(ratio);
+        }
+
+        // 結果をrequestScopeへ格納
+        requestScope("fromDateList", fromDateList);
+        requestScope("toDateList", toDateList);
+        requestScope("numPracticeList", numPracticeList);
+        requestScope("numFullAttendList", numFullAttendList);
+        requestScope("numPartAttendList", numPartAttendList);
+        requestScope("ratioList", ratioList);
+
+    }
+
+    private List<Date> getDateList() {
+
+        List<Date> rtnList = new ArrayList<Date>();
+
+        String[] dateList =
+            StringUtil.split(
+                SettingPropertyUtil.getProperty("calc.attend.date"),
+                ",");
+
+        for (int i = 0; i < dateList.length; i++) {
+            rtnList
+                .add(DateUtil.toDate(dateList[i], DateUtil.ISO_DATE_PATTERN));
+        }
+
+        return rtnList;
+    }
+
+    private Key getMemberKey() {
+        String id = asString("id");
+        if(!StringUtil.isEmpty(id)) {
+            MemberService memSvc = new MemberService();
+            Member member = memSvc.searchFromId(id);
+            if(member != null){
+                return member.getKey();
+            }
+        }
+        
+        Member loginUser = sessionScope(Constants.SESSION_KEY_LOGIN_USER);
+        return loginUser.getKey();
+    }
+}

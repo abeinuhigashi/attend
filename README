@@ -1,0 +1,22 @@
+egitからのpushがうまくいかない。。。
+
+git bashからのpushは
+~/.ssh/以下に公開鍵、秘密鍵を格納した上で、
+
+git remote add origin git@github.com:nkawano/attend    (初回のみ)
+git push origin master       (masterの作業リポジトリを、origin上記で定義に、push)
+
+ブランチの運用に関しては調査。あんまりよくわかってないので、何か良い案があったら教えて！
+
+
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+
+
+おおおおおお
+
+もう一度updateしてみます
+
+kawano change
+
+
+test svn

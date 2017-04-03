@@ -1,0 +1,13 @@
+<!-- Indices written at Mon, 24 Jun 2013 13:14:31 JST -->
+
+<datastore-indexes>
+
+    <!-- Used 32 times in query history -->
+    <datastore-index kind="Member" ancestor="false" source="auto">
+        <property name="notUsedLongTime" direction="asc"/>
+        <property name="part" direction="asc"/>
+        <property name="suspended" direction="asc"/>
+        <property name="id" direction="asc"/>
+    </datastore-index>
+
+</datastore-indexes>
